@@ -1,7 +1,9 @@
 # PostgreSQL pgAdmin 4 with binary support
 
 ![Docker Automated build](https://img.shields.io/docker/automated/kvineet/docker-pgadmin4.svg) 
-![Docker Build Status](https://img.shields.io/docker/build/kvineet/docker-pgadmin4.svg)
+![Docker Build Status](https://img.shields.io/docker/build/kvineet/docker-pgadmin4.svg) 
+![MicroBadger Size](https://img.shields.io/microbadger/image-size/kvineet/docker-pgadmin4.svg)
+
 
 
 This is modified version of [foxylion's pgadmin4 docker file](https://github.com/foxylion/docker-pgadmin4.git)
