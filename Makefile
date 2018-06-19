@@ -1,6 +1,5 @@
-
 build:
-	docker build -t foxylion/pgadmin4 .
+	docker build -t kvineet/pgadmin4 .
 
 run:
-	docker run --rm -it -p 5433:80 -v `pwd`/.pgadmin4:/data foxylion/pgadmin4
+	docker run -it -d --link postgres -p 5433:80 -v `pwd`/.pgadmin4:/data kvineet/pgadmin4
