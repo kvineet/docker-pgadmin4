@@ -1,5 +1,9 @@
 # PostgreSQL pgAdmin 4 with binary support
 
+![Docker Automated build](https://img.shields.io/docker/automated/kvineet/docker-pgadmin4.svg) 
+![Docker Build Status](https://img.shields.io/docker/build/kvineet/docker-pgadmin4.svg)
+
+
 This is modified version of [foxylion's pgadmin4 docker file](https://github.com/foxylion/docker-pgadmin4.git)
 
 Instead of using `python:2-alpine` as base image, this dockerfile uses `alpine:3.7`. That way latest version of `pg_dump` and `pg_restore` tools can be installed. just build the image again when [newer version](https://pkgs.alpinelinux.org/packages?name=postgresql-client&branch=edge) of `postgresql-client` is available on `alpine`
