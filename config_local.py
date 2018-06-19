@@ -75,7 +75,7 @@ MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
 ##########################################################################
 
 # Check for new versions of the application?
-UPGRADE_CHECK_ENABLED = False
+UPGRADE_CHECK_ENABLED = True
 
 # Where should we get the data from?
 UPGRADE_CHECK_URL = 'https://www.pgadmin.org/versions.json'
