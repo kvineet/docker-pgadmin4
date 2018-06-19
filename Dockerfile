@@ -30,6 +30,7 @@ ENV MAIL_USE_SSL  true
 ENV MAIL_USERNAME username
 ENV MAIL_PASSWORD password
 
+
 EXPOSE 80
 
 CMD [ "python", "./usr/lib/python2.7/site-packages/pgadmin4/pgAdmin4.py" ]
