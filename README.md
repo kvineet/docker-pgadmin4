@@ -1,38 +1,36 @@
 # PostgreSQL pgAdmin 4 with binary support
 
-[![Docker Stars](https://img.shields.io/docker/stars/foxylion/pgadmin4.svg?style=flat-square)](https://hub.docker.com/r/foxylion/pgadmin4/) [![Docker Pulls](https://img.shields.io/docker/pulls/foxylion/pgadmin4.svg?style=flat-square)](https://hub.docker.com/r/foxylion/pgadmin4/)
+![Docker Automated build](https://img.shields.io/docker/automated/kvineet/docker-pgadmin4.svg) 
+![Docker Build Status](https://img.shields.io/docker/build/kvineet/docker-pgadmin4.svg) 
+![MicroBadger Size](https://img.shields.io/microbadger/image-size/kvineet/docker-pgadmin4.svg)
 
-## Quick Start
+
+## Quick Install
+
+You can directly pull latest image from [dockerhub](https://hub.docker.com/r/kvineet/docker-pgadmin4/).
+```
+docker pull kvineet/docker-pgadmin4
+```
+
+## Details
+This is modified version of [foxylion's pgadmin4 docker file](https://github.com/foxylion/docker-pgadmin4.git)
+
+Instead of using `python:2-alpine` as base image, this dockerfile uses `alpine:3.7`. That way latest version of `pg_dump` and `pg_restore` tools can be installed. just build the image again when [newer version](https://pkgs.alpinelinux.org/packages?name=postgresql-client&branch=edge) of `postgresql-client` is available on `alpine`
+
+
+## Upgrading
+To upgrade pgadmin version set the environment variables and build the image again.
 
 ```
-docker run -d --name pgadmin -p 5433:80 foxylion/pgadmin4
+ENV PGADMIN_VERSION_MAJOR 3 
+ENV PGADMIN_VERSION_MINOR 0
+```
+There is probably no need to ever update python pip version, as latest is installed whenever new image is built. Update this when `10.0.1` becomes too old.
+
+```
+ENV PYTHON_PIP_VERSION 10.0.1
 ```
 
-Now you can access your pgAdmin instance on [localhost:5433](http://localhost:5433/).
-
-## Environment Variables
-
-| Variable Name | Description | Default |
-| ------------- | ----------- | ------- |
-| SERVER_MODE | When set to true authentification is required to acces pgAdmin 4 | `False` |
-| MAIL_SERVER | Mail server for sending mails (e.g. forgotten passwords) | `mail.example.tld` |
-| MAIL_PORT | Mail server port | `465` |
-| MAIL_USE_SSL | When enabled ssl is used to connect to the mail server | `True` |
-| MAIL_USERNAME | Username used to authenticate against the mail server | `username` |
-| MAIL_PASSWORD | Password used to authenticate against the mail server | `password` |
-
-
-## Binary Support (pg_dump, pg_restore)
-
-This version of pgAdmin 4 brings the binaries required to backup/restore databases
-with it. You can do backups of PostgreSQL 9.5 servers.
-
-To enable the feature go to File -> Preferences -> Binary paths and set them to `/usr/bin`.
-
-When doing a backup it is recommended to setup a directory where the backups can
-be stored outside of the container.
-
-## Data Storage Outside of the Container
-
-Just pass `-v /my/local/directory:/data` to the `docke run` command. This will store
-the session and configuration database in the mounted folder. The storage is also there.
+## Build From Source
+- `make build` will create the new image with tag `kvineet/pgadmin4`.
+- `make run` will mount `./.pgadmin4` directory to `/data` and expose port 80 on host port 5433
