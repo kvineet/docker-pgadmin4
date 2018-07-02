@@ -1,9 +1,9 @@
 FROM alpine:3.7
 
-ENV PGADMIN_VERSION_MAJOR 3 
-ENV PGADMIN_VERSION_MINOR 1
+ENV PGADMIN_VERSION_MAJOR=3 
+ENV PGADMIN_VERSION_MINOR=1
 
-ENV PYTHON_PIP_VERSION 10.0.1
+ENV PYTHON_PIP_VERSION=10.0.1
 
 RUN apk add --no-cache alpine-sdk postgresql-client postgresql-dev python2 python2-dev \
 	&& wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
