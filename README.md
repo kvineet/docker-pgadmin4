@@ -11,7 +11,10 @@ You can directly pull latest image from [dockerhub](https://hub.docker.com/r/kvi
 ```
 docker pull kvineet/docker-pgadmin4
 ```
-
+Then you may run the image with following command.
+```
+docker run -d --name pgadmin -p 5433:80 -v $HOME/.pgadmin4:/data kvineet/docker-pgadmin4:latest
+```
 ## Details
 This is modified version of [foxylion's pgadmin4 docker file](https://github.com/foxylion/docker-pgadmin4.git)
 
