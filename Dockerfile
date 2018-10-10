@@ -3,17 +3,17 @@ FROM alpine:3.7
 ENV PGADMIN_VERSION_MAJOR=3 
 ENV PGADMIN_VERSION_MINOR=4
 
-ENV PYTHON_PIP_VERSION=10.0.1
+ENV PYTHON_PIP_VERSION=18.1
 
-RUN apk add --no-cache alpine-sdk postgresql-client postgresql-dev python2 python2-dev libffi-dev \
-	&& wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
+RUN apk add --no-cache alpine-sdk postgresql-client postgresql-dev python2 python2-dev libffi-dev 
+RUN wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
 	&& python get-pip.py \
 		--disable-pip-version-check \
 		--no-cache-dir \
-		"pip==$PYTHON_PIP_VERSION" \
-	&& echo "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}/pip/pgadmin4-${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}-py2.py3-none-any.whl" > requirements.txt \
-	&& pip install --no-cache-dir -r requirements.txt \
-	&& apk del alpine-sdk \
+		"pip==$PYTHON_PIP_VERSION" 
+RUN echo "https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}/pip/pgadmin4-${PGADMIN_VERSION_MAJOR}.${PGADMIN_VERSION_MINOR}-py2.py3-none-any.whl" > requirements.txt \
+	&& pip install --no-cache-dir -r requirements.txt 
+RUN apk del alpine-sdk \
 	&& rm -f get-pip.py 
 
 
