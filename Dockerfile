@@ -5,7 +5,7 @@ ENV PGADMIN_VERSION_MINOR=5
 
 ENV PYTHON_PIP_VERSION=18.1
 
-RUN apk add --no-cache alpine-sdk postgresql-client postgresql-dev python2 python2-dev libffi-dev 
+RUN apk add --no-cache alpine-sdk postgresql-client postgresql-dev python2 python2-dev libffi-dev linux-headers
 RUN wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py' \
 	&& python get-pip.py \
 		--disable-pip-version-check \
